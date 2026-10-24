@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameVault · Detalles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/estilos.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/adaptable.css" />
+</head>
+
+<body data-page="detalles">
+  <div class="app-shell">
+    <header class="desktop-nav">
+      <a class="logo" href="inicio.html"><span><svg class="ic"><use href="#i-biblioteca" /></svg></span>GameVault</a>
+      <nav aria-label="Principal">
+        <a href="inicio.html">Inicio</a>
+        <a href="tienda.html" class="is-current">Tienda</a>
+        <a href="biblioteca.html">Biblioteca</a>
+        <a href="favoritos.html">Favoritos</a>
+      </nav>
+      <a class="avatar" href="perfil.html" aria-label="Perfil"><svg class="ic"><use href="#i-usuario" /></svg></a>
+    </header>
+    <nav class="mobile-nav" aria-label="Principal móvil">
+      <a href="inicio.html"><svg class="ic"><use href="#i-inicio" /></svg><span>Inicio</span></a>
+      <a href="tienda.html" class="is-current"><svg class="ic"><use href="#i-tienda" /></svg><span>Tienda</span></a>
+      <a href="biblioteca.html"><svg class="ic"><use href="#i-biblioteca" /></svg><span>Biblioteca</span></a>
+      <a href="favoritos.html"><svg class="ic"><use href="#i-corazon" /></svg><span>Favoritos</span></a>
+      <a href="perfil.html"><svg class="ic"><use href="#i-usuario" /></svg><span>Perfil</span></a>
+    </nav>
+    <noscript><p style="padding:24px">GameVault necesita JavaScript para funcionar.</p></noscript>
+
+    <main>
+      <!-- Estructura fija: js/vistas/VistaDetallesVideojuego.js solo escribe los datos del juego (?id=...) -->
+      <section class="detail-page" id="detalle" hidden>
+        <div class="detail-backdrop"><img alt="" /></div>
+        <div class="detail-inner"><a class="back-link detail-back" href="tienda.html" data-accion="volver"><svg class="ic"><use href="#i-volver" /></svg>Volver</a>
+          <div class="detail-layout"><img class="detail-cover" alt="" />
+            <div class="detail-copy"><span class="eyebrow"></span>
+              <h1></h1>
+              <p class="detail-description"></p>
+              <dl>
+                <div><dt>Desarrollador</dt><dd id="detalle-desarrollador"></dd></div>
+                <div><dt>Fecha de lanzamiento</dt><dd id="detalle-fecha"></dd></div>
+                <div><dt>Plataforma</dt><dd id="detalle-plataforma"></dd></div>
+                <div><dt>Tamaño</dt><dd id="detalle-tamano"></dd></div>
+              </dl>
+              <div class="detail-purchase">
+                <div><small>Precio</small><strong id="detalle-precio"></strong></div>
+                <button type="button" class="btn btn-primary" data-accion="comprar">Comprar ahora</button>
+                <input type="checkbox" id="casilla-favorito" class="sr-only" />
+                <label class="btn btn-secondary fav" for="casilla-favorito"><svg class="ic"><use href="#i-corazon" /></svg><span class="off">Agregar a favoritos</span><span class="on">En favoritos</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="page" id="detalle-no-encontrado" hidden>
+        <div class="empty"><span><svg class="ic"><use href="#i-buscar" /></svg></span>
+          <h2>No encontramos ese videojuego</h2>
+          <p>Puede que se haya eliminado o que el enlace esté incompleto.</p>
+          <div class="empty-actions"><a class="btn btn-primary" href="tienda.html">Ir a la tienda</a></div>
+        </div>
+      </section>
+    </main>
+    <div class="toast" role="status" hidden><span><svg class="ic"><use href="#i-confirmar" /></svg></span><b></b></div>
+  </div>
+    <dialog class="modal" id="ventana-compra" aria-labelledby="titulo-ventana-compra">
+      <form method="dialog" class="modal-body">
+        <button class="modal-close" aria-label="Cerrar"><svg class="ic"><use href="#i-cerrar" /></svg></button>
+        <div class="modal-icon"><svg class="ic"><use href="#i-tienda" /></svg></div>
+        <h2 id="titulo-ventana-compra">Confirmar compra</h2>
+        <p id="compra-nueva">Estás a punto de comprar <strong class="compra-nombre"></strong>. El juego se agregará a tu biblioteca.</p>
+        <p id="compra-existente" hidden><strong class="compra-nombre"></strong> ya está en tu biblioteca.</p>
+        <div class="purchase-summary"><img alt="" /><div><span id="compra-genero"></span><strong id="compra-precio"></strong></div></div>
+        <div class="modal-actions"><button class="btn btn-ghost">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="compra-confirmar" data-accion="confirmar-compra" autofocus>Confirmar compra</button>
+          <a class="btn btn-primary" id="compra-ir-biblioteca" href="biblioteca.html" hidden>Ir a Biblioteca</a></div>
+      </form>
+    </dialog>
+  <script src="../js/gamevault.paquete.js"></script>
+</body>
+
+</html>

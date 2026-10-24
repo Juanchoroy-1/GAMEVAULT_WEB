@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameVault · Confirmación</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/estilos.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/adaptable.css" />
+</head>
+
+<body data-page="confirmacion">
+  <div class="app-shell">
+    <header class="desktop-nav">
+      <a class="logo" href="inicio.html"><span><svg class="ic"><use href="#i-biblioteca" /></svg></span>GameVault</a>
+      <nav aria-label="Principal">
+        <a href="inicio.html">Inicio</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="biblioteca.html" class="is-current">Biblioteca</a>
+        <a href="favoritos.html">Favoritos</a>
+      </nav>
+      <a class="avatar" href="perfil.html" aria-label="Perfil"><svg class="ic"><use href="#i-usuario" /></svg></a>
+    </header>
+    <nav class="mobile-nav" aria-label="Principal móvil">
+      <a href="inicio.html"><svg class="ic"><use href="#i-inicio" /></svg><span>Inicio</span></a>
+      <a href="tienda.html"><svg class="ic"><use href="#i-tienda" /></svg><span>Tienda</span></a>
+      <a href="biblioteca.html" class="is-current"><svg class="ic"><use href="#i-biblioteca" /></svg><span>Biblioteca</span></a>
+      <a href="favoritos.html"><svg class="ic"><use href="#i-corazon" /></svg><span>Favoritos</span></a>
+      <a href="perfil.html"><svg class="ic"><use href="#i-usuario" /></svg><span>Perfil</span></a>
+    </nav>
+    <noscript><p style="padding:24px">GameVault necesita JavaScript para funcionar.</p></noscript>
+
+    <main>
+      <section class="page saved" id="guardado">
+        <div class="empty"><span class="ok"><svg class="ic"><use href="#i-confirmar" /></svg></span>
+          <h2 id="titulo-guardado"></h2>
+          <p id="texto-guardado"></p>
+          <div class="empty-actions">
+            <a class="btn btn-primary" href="biblioteca.html">Volver a Biblioteca</a>
+            <a class="btn btn-secondary" id="enlace-detalle-guardado" href="tienda.html">Ver detalles</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="toast" role="status" hidden><span><svg class="ic"><use href="#i-confirmar" /></svg></span><b></b></div>
+  </div>
+  <script src="../js/gamevault.paquete.js"></script>
+</body>
+
+</html>

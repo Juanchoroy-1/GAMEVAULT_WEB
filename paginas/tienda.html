@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameVault · Tienda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/estilos.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/adaptable.css" />
+</head>
+
+<body data-page="tienda">
+  <div class="app-shell">
+    <header class="desktop-nav">
+      <a class="logo" href="inicio.html"><span><svg class="ic"><use href="#i-biblioteca" /></svg></span>GameVault</a>
+      <nav aria-label="Principal">
+        <a href="inicio.html">Inicio</a>
+        <a href="tienda.html" class="is-current">Tienda</a>
+        <a href="biblioteca.html">Biblioteca</a>
+        <a href="favoritos.html">Favoritos</a>
+      </nav>
+      <a class="avatar" href="perfil.html" aria-label="Perfil"><svg class="ic"><use href="#i-usuario" /></svg></a>
+    </header>
+    <nav class="mobile-nav" aria-label="Principal móvil">
+      <a href="inicio.html"><svg class="ic"><use href="#i-inicio" /></svg><span>Inicio</span></a>
+      <a href="tienda.html" class="is-current"><svg class="ic"><use href="#i-tienda" /></svg><span>Tienda</span></a>
+      <a href="biblioteca.html"><svg class="ic"><use href="#i-biblioteca" /></svg><span>Biblioteca</span></a>
+      <a href="favoritos.html"><svg class="ic"><use href="#i-corazon" /></svg><span>Favoritos</span></a>
+      <a href="perfil.html"><svg class="ic"><use href="#i-usuario" /></svg><span>Perfil</span></a>
+    </nav>
+    <noscript><p style="padding:24px">GameVault necesita JavaScript para funcionar.</p></noscript>
+
+    <main>
+      <section class="page" id="tienda">
+        <div class="page-heading">
+          <div><span class="eyebrow">CATÁLOGO</span>
+            <h1>Tienda</h1>
+            <p>Descubre tu próxima aventura.</p>
+          </div>
+          <div class="heading-actions">
+            <span class="result-count"></span>
+            <!-- Abre la ventana (<dialog id="ventana-formulario">) con el formulario de agregar -->
+            <button type="button" class="btn btn-primary" data-accion="agregar-videojuego"><svg class="ic"><use href="#i-mas" /></svg>Agregar videojuego</button>
+          </div>
+        </div>
+        <div class="filters">
+          <label class="search"><svg class="ic"><use href="#i-buscar" /></svg><input type="text" name="busqueda" placeholder="Buscar videojuegos..." aria-label="Buscar videojuegos" autocomplete="off" /></label>
+          <div class="filter-selects"><span class="filter-icon"><svg class="ic"><use href="#i-filtro" /></svg></span>
+            <label class="select-wrap"><span class="sr-only">Género</span>
+              <select name="genero" aria-label="Género"><option value="">Género</option><option>Acción</option><option>RPG</option><option>Aventura</option><option>Carreras</option><option>Deportes</option></select></label>
+            <label class="select-wrap"><span class="sr-only">Plataforma</span>
+              <select name="plataforma" aria-label="Plataforma"><option value="">Plataforma</option><option>PC</option><option>Windows / Mac</option></select></label>
+            <label class="select-wrap"><span class="sr-only">Precio</span>
+              <select name="precio" aria-label="Precio"><option value="">Precio</option><option value="bajo">Menos de $100.000</option><option value="alto">$100.000 o más</option></select></label>
+            <label class="select-wrap"><span class="sr-only">Ordenar</span><select name="orden" aria-label="Ordenar"><option value="nombre">Ordenar: Nombre</option><option value="precio">Ordenar: Precio</option><option value="fecha">Ordenar: Fecha</option></select></label>
+          </div>
+        </div>
+        <div class="store-grid"></div>
+        <div class="empty" hidden><span><svg class="ic"><use href="#i-buscar" /></svg></span>
+          <h2>No encontramos juegos</h2>
+          <p>Prueba otra búsqueda o elimina algunos filtros.</p>
+        </div>
+      </section>
+    </main>
+    <div class="toast" role="status" hidden><span><svg class="ic"><use href="#i-confirmar" /></svg></span><b></b></div>
+  </div>
+    <dialog class="modal" id="ventana-compra" aria-labelledby="titulo-ventana-compra">
+      <form method="dialog" class="modal-body">
+        <button class="modal-close" aria-label="Cerrar"><svg class="ic"><use href="#i-cerrar" /></svg></button>
+        <div class="modal-icon"><svg class="ic"><use href="#i-tienda" /></svg></div>
+        <h2 id="titulo-ventana-compra">Confirmar compra</h2>
+        <p id="compra-nueva">Estás a punto de comprar <strong class="compra-nombre"></strong>. El juego se agregará a tu biblioteca.</p>
+        <p id="compra-existente" hidden><strong class="compra-nombre"></strong> ya está en tu biblioteca.</p>
+        <div class="purchase-summary"><img alt="" /><div><span id="compra-genero"></span><strong id="compra-precio"></strong></div></div>
+        <div class="modal-actions"><button class="btn btn-ghost">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="compra-confirmar" data-accion="confirmar-compra" autofocus>Confirmar compra</button>
+          <a class="btn btn-primary" id="compra-ir-biblioteca" href="biblioteca.html" hidden>Ir a Biblioteca</a></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-formulario" id="ventana-formulario" aria-labelledby="titulo-ventana-formulario">
+      <div class="modal-body">
+        <form method="dialog" id="cerrar-formulario"></form>
+        <button type="submit" form="cerrar-formulario" class="modal-close" aria-label="Cerrar"><svg class="ic"><use href="#i-cerrar" /></svg></button>
+        <h2 id="titulo-ventana-formulario">Agregar videojuego</h2>
+        <p>Completa la información para añadirlo al catálogo de la tienda.</p>
+        <form class="game-form" id="formulario-videojuego">
+          <div class="form-alert" role="alert">Revisa los campos marcados en rojo antes de continuar.</div>
+          <div class="form-grid">
+            <label class="field"><span>Nombre *</span><input type="text" name="nombre" required pattern="\s*\S.*\S\s*" placeholder="Ej. Grand Theft Auto V" autofocus /><small>El nombre es obligatorio (mínimo 2 caracteres).</small></label>
+            <label class="field"><span>Precio *</span>
+              <div class="input-prefix"><span>$</span><input type="number" name="precio" required min="1" step="any" placeholder="59900" /></div><small>El precio debe ser mayor que 0.</small></label>
+            <label class="field"><span>Género *</span><select name="genero" required><option value="">Seleccionar género</option><option>Acción</option><option>RPG</option><option>Aventura</option><option>Carreras</option><option>Deportes</option></select><small>Debes seleccionar un género.</small></label>
+            <label class="field"><span>Categoría</span><input type="text" name="categoria" placeholder="Ej. Mundo abierto" /></label>
+            <label class="field"><span>Plataforma</span><select name="plataforma"><option>PC</option><option>Windows / Mac</option></select></label>
+            <label class="field"><span>Desarrollador</span><input type="text" name="desarrollador" placeholder="Nombre del estudio" /></label>
+            <label class="field"><span>Fecha de lanzamiento *</span><input type="text" name="fecha" required inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/AAAA" /><small>Ingresa una fecha válida (DD/MM/AAAA).</small></label>
+            <label class="field"><span>Tamaño</span><input type="text" name="tamano" pattern="\s*\d+([.,]\d+)?\s?[MGTmgt][Bb]\s*" placeholder="Ej. 80 GB" /><small>Usa un formato como 80 GB.</small></label>
+            <label class="field"><span>Estado</span><select name="estado"><option>Instalado</option><option selected>No instalado</option><option>Jugando</option><option>Completado</option></select></label>
+            <div class="full-field"><div class="field" role="group" aria-labelledby="etiqueta-portada"><span id="etiqueta-portada">Portada</span>
+            <div class="cover-picker"><img class="cover-preview" src="../assets/imagenes/predeterminada.svg" alt="Vista previa de la portada" />
+              <div><input type="file" name="imagen" accept=".jpg,.jpeg,.png,.webp,.gif,.avif" aria-labelledby="etiqueta-portada" />
+                <p class="cover-help">JPG, PNG, WEBP, GIF o AVIF · máximo <span class="cover-limite">2</span> MB. Al editar, si no eliges otra imagen se conserva la actual.</p>
+                <small class="cover-error" role="alert" hidden></small></div></div></div></div>
+            <div class="full-field"><label class="field"><span>Descripción</span><textarea name="descripcion" rows="5" placeholder="Describe brevemente el videojuego..."></textarea></label></div>
+          </div>
+          <div class="form-actions"><button type="submit" form="cerrar-formulario" class="btn btn-ghost">Cancelar</button><button type="submit" class="btn btn-primary">Guardar videojuego</button></div>
+        </form>
+      </div>
+    </dialog>
+  <script src="../js/gamevault.paquete.js"></script>
+</body>
+
+</html>

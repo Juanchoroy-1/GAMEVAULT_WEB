@@ -1,0 +1,146 @@
+/* GameVault · componentes: botones, tarjetas, filtros, menús, formularios, ventanas y notificaciones */
+
+/* ---------- Botones y enlaces ---------- */
+.btn { min-height: 44px; border-radius: 10px; border: 1px solid transparent; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-weight: 800; font-size: 13px; cursor: pointer; transition: .18s ease; white-space: nowrap; }
+.btn .ic { width: 18px; height: 18px; }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { color: var(--on-accent); background: var(--accent); }
+.btn-primary:hover { background: #c5ff58; }
+.btn-secondary { background: var(--surface-3); border-color: var(--line); color: var(--text); }
+.btn-secondary:hover, .btn-ghost:hover { border-color: #45494f; background: #25282c; }
+.btn-danger { color: #170505; background: var(--danger); }
+.btn-danger:hover { background: #ff8080; }
+.btn-ghost { background: transparent; border-color: var(--line); color: var(--text); }
+.section-title a, .detail-link, .back-link { color: var(--muted); display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; }
+.section-title a:hover, .detail-link:hover, .back-link:hover { color: var(--accent); }
+
+/* ---------- Tarjetas de la tienda ---------- */
+.game-card { border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); overflow: hidden; min-width: 0; transition: .2s ease; }
+.game-card:hover { transform: translateY(-4px); border-color: #3c4045; }
+.cover-button { display: block; width: 100%; background: #202225; overflow: hidden; }
+.cover-button img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .35s ease; }
+.game-card:hover .cover-button img { transform: scale(1.03); }
+.game-card.compact .cover-button img { aspect-ratio: 16 / 10; }
+.card-content { padding: 17px; }
+.card-content p, .library-card-content p { margin-bottom: 5px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
+.card-content h3 { margin-bottom: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.card-bottom strong { font-size: 14px; }
+.card-bottom .btn { min-height: 34px; padding: 0 12px; font-size: 11px; }
+.detail-link { margin-top: 14px; color: var(--text); }
+.detail-link .ic { width: 14px; height: 14px; }
+
+/* ---------- Búsqueda y filtros ---------- */
+.filters { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 12px; margin-bottom: 26px; display: grid; grid-template-columns: minmax(230px, 1fr) auto; gap: 12px; }
+.search { display: flex; align-items: center; gap: 10px; border: 1px solid transparent; background: var(--surface-2); border-radius: 9px; padding: 0 14px; color: var(--muted); }
+.search .ic { width: 19px; height: 19px; }
+.search:focus-within { border-color: var(--accent); }
+.search input { width: 100%; height: 42px; border: 0; background: transparent; color: var(--text); outline: 0; font-size: 13px; }
+.filter-selects { display: flex; gap: 8px; }
+.filter-icon { display: none; }
+.select-wrap select { height: 42px; border: 1px solid var(--line); border-radius: 9px; color: #c8cbd0; background: var(--surface-2); padding: 0 32px 0 12px; font-size: 12px; cursor: pointer; }
+
+/* ---------- Estado vacío ---------- */
+.empty { min-height: 330px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.empty > span { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--surface-2); color: var(--muted); margin-bottom: 18px; }
+.empty > span.ok { background: var(--accent); color: var(--on-accent); }
+.empty .ic { width: 26px; height: 26px; }
+.empty h2 { margin-bottom: 6px; }
+.empty p { font-size: 13px; }
+.empty-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; }
+.empty-actions .ic { width: 18px; height: 18px; }
+
+/* ---------- Biblioteca ---------- */
+.library-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: visible; min-width: 0; }
+.library-card > img { width: 100%; height: 180px; object-fit: cover; border-radius: 13px 13px 0 0; }
+.library-card-content { padding: 17px; }
+.library-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.library-card-head h3 { margin-bottom: 12px; }
+.icon-button { border: 0; background: transparent; color: var(--muted); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 7px; cursor: pointer; list-style: none; }
+.icon-button::-webkit-details-marker { display: none; }
+.icon-button:hover { background: var(--surface-3); color: var(--text); }
+.menu-wrap { position: relative; }
+.context-menu { position: absolute; z-index: 10; right: 0; top: 34px; width: 164px; background: #202326; border: 1px solid #373b40; border-radius: 10px; padding: 6px; box-shadow: 0 16px 40px rgba(0, 0, 0, .5); }
+.context-menu :is(a, button) { width: 100%; border: 0; background: none; text-align: left; cursor: pointer; border-radius: 7px; padding: 9px 10px; display: flex; gap: 9px; align-items: center; font-size: 12px; }
+.context-menu .ic { width: 16px; height: 16px; }
+.context-menu :is(a, button):hover { background: #2a2e32; }
+.context-menu .danger { color: #ff9a9a; }
+.context-menu .danger:hover { background: rgba(255, 98, 98, .12); }
+.status { display: inline-flex; gap: 7px; align-items: center; font-size: 10px; color: var(--muted); margin-bottom: 16px; }
+.status i { width: 6px; height: 6px; border-radius: 50%; background: #858a91; }
+.status-jugando i { background: var(--accent); box-shadow: 0 0 0 3px rgba(183, 243, 74, .12); }
+.status-instalado i { background: #65a8ff; }
+.status-completado i { background: #b68cff; }
+.library-card .btn { width: 100%; }
+
+/* ---------- Formularios y validación ---------- */
+.game-form { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 30px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.field { display: flex; flex-direction: column; gap: 8px; color: #cbd0d5; font-size: 11px; font-weight: 700; }
+.field input, .field select, .field textarea { width: 100%; border: 1px solid var(--line); background: var(--surface-2); border-radius: 9px; min-height: 44px; color: var(--text); padding: 0 13px; outline: 0; font-size: 13px; font-weight: 500; }
+.field textarea { padding: 13px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+.field small { display: none; color: var(--danger); font-size: 11px; font-weight: 600; }
+.field input[type="file"] { padding: 9px 10px; cursor: pointer; }
+.field input[type="file"]::file-selector-button { margin-right: 12px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface-3); color: var(--text); font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.cover-picker { display: flex; align-items: center; gap: 18px; }
+.cover-picker > div { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.cover-preview { width: 144px; aspect-ratio: 4 / 3; flex-shrink: 0; object-fit: cover; border-radius: 9px; border: 1px solid var(--line); background: var(--surface-2); }
+.cover-help { margin: 0; color: var(--muted); font-size: 11px; font-weight: 500; }
+.field small.cover-error { display: block; }
+.input-prefix { display: flex; border: 1px solid var(--line); background: var(--surface-2); border-radius: 9px; overflow: hidden; }
+.input-prefix:focus-within { border-color: var(--accent); }
+.input-prefix span { display: flex; align-items: center; padding-left: 13px; color: var(--muted); }
+.input-prefix input { border: 0; }
+.full-field { grid-column: 1 / -1; }
+.form-actions { display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--line); margin-top: 28px; padding-top: 24px; }
+.form-alert { display: none; margin-bottom: 22px; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255, 98, 98, .45); background: rgba(255, 98, 98, .08); color: #ffb3b3; font-size: 12px; font-weight: 700; }
+/* Errores: tras pulsar «Guardar» (clase .intentado, la pone JS) o al salir de un campo con error (:user-invalid).
+   Cada regla va aparte: si un navegador no entiende un selector, descarta solo esa regla. */
+.game-form.intentado .field:has(:invalid) small { display: block; }
+.field:has(:user-invalid) small { display: block; }
+.game-form.intentado :is(input, select, textarea):invalid { border-color: var(--danger); }
+.field :is(input, select, textarea):user-invalid { border-color: var(--danger); }
+.game-form.intentado .input-prefix:has(:invalid) { border-color: var(--danger); }
+.input-prefix:has(:user-invalid) { border-color: var(--danger); }
+.game-form.intentado:has(:invalid) .form-alert { display: block; }
+
+/* ---------- Favoritos (casilla + etiqueta) ---------- */
+.fav .on { display: none; }
+input:checked + .fav { color: var(--accent); border-color: var(--accent); }
+input:checked + .fav .on { display: inline; }
+input:checked + .fav .off { display: none; }
+input:checked + .fav .ic { fill: currentColor; }
+input:focus-visible + .fav { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- Ventanas (<dialog> nativo: Escape, fondo y foco los resuelve el navegador) ---------- */
+.modal { width: min(440px, calc(100% - 40px)); max-height: calc(100vh - 40px); overflow-y: auto; padding: 0; color: var(--text); background: #17191c; border: 1px solid #33363b; border-radius: 16px; box-shadow: 0 28px 90px rgba(0, 0, 0, .65); }
+.modal[open] { animation: rise .22s ease; }
+.modal::backdrop { background: rgba(0, 0, 0, .76); backdrop-filter: blur(6px); animation: fade .18s ease; }
+.modal-body { padding: 30px; }
+.modal-close { position: absolute; right: 18px; top: 18px; color: var(--muted); display: grid; background: none; border: 0; padding: 0; cursor: pointer; }
+.modal-close:hover { color: var(--text); }
+.modal-icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; color: var(--accent); background: rgba(183, 243, 74, .1); margin-bottom: 22px; }
+.modal-icon-peligro { color: var(--danger); background: rgba(255, 98, 98, .1); }
+.modal-icon .ic { width: 24px; height: 24px; }
+.modal h2 { font-size: 24px; margin-bottom: 10px; }
+.modal-body > p { font-size: 13px; margin-bottom: 22px; }
+.modal-body > p strong { color: var(--text); }
+.purchase-summary { display: flex; align-items: center; gap: 13px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 10px; margin-bottom: 24px; }
+.purchase-summary img { width: 54px; height: 54px; object-fit: cover; border-radius: 7px; }
+.purchase-summary div { flex: 1; display: flex; justify-content: space-between; align-items: center; }
+.purchase-summary span { color: var(--muted); font-size: 11px; }
+.purchase-summary strong { font-size: 13px; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 9px; }
+
+/* Ventana con el formulario de agregar videojuego (dentro de la tienda) */
+.modal-formulario { width: min(760px, calc(100% - 40px)); }
+.modal .game-form { border: 0; padding: 0; background: none; }
+@keyframes fade { from { opacity: 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+
+/* ---------- Notificaciones ---------- */
+.toast { position: fixed; z-index: 110; right: 24px; bottom: 24px; min-width: 280px; background: #1c201b; border: 1px solid #3e5030; border-radius: 11px; padding: 13px 16px; display: flex; align-items: center; gap: 11px; font-size: 12px; font-weight: 700; box-shadow: 0 18px 50px rgba(0, 0, 0, .45); animation: rise .22s ease; }
+.toast > span { width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); }
+.toast-error { background: #231616; border-color: #6a3030; }
+.toast-error > span { background: var(--danger); color: #170505; }

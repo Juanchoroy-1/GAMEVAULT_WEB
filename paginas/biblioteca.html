@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameVault · Mi Biblioteca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/estilos.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/adaptable.css" />
+</head>
+
+<body data-page="biblioteca">
+  <div class="app-shell">
+    <header class="desktop-nav">
+      <a class="logo" href="inicio.html"><span><svg class="ic"><use href="#i-biblioteca" /></svg></span>GameVault</a>
+      <nav aria-label="Principal">
+        <a href="inicio.html">Inicio</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="biblioteca.html" class="is-current">Biblioteca</a>
+        <a href="favoritos.html">Favoritos</a>
+      </nav>
+      <a class="avatar" href="perfil.html" aria-label="Perfil"><svg class="ic"><use href="#i-usuario" /></svg></a>
+    </header>
+    <nav class="mobile-nav" aria-label="Principal móvil">
+      <a href="inicio.html"><svg class="ic"><use href="#i-inicio" /></svg><span>Inicio</span></a>
+      <a href="tienda.html"><svg class="ic"><use href="#i-tienda" /></svg><span>Tienda</span></a>
+      <a href="biblioteca.html" class="is-current"><svg class="ic"><use href="#i-biblioteca" /></svg><span>Biblioteca</span></a>
+      <a href="favoritos.html"><svg class="ic"><use href="#i-corazon" /></svg><span>Favoritos</span></a>
+      <a href="perfil.html"><svg class="ic"><use href="#i-usuario" /></svg><span>Perfil</span></a>
+    </nav>
+    <noscript><p style="padding:24px">GameVault necesita JavaScript para funcionar.</p></noscript>
+
+    <main>
+      <section class="page" id="biblioteca">
+        <div class="page-heading">
+          <div><span class="eyebrow">TU COLECCIÓN</span>
+            <h1>Mi Biblioteca</h1>
+            <p id="cantidad-biblioteca"></p>
+          </div>
+        </div>
+        <div class="filters">
+          <label class="search"><svg class="ic"><use href="#i-buscar" /></svg><input type="text" name="busqueda" placeholder="Buscar videojuegos..." aria-label="Buscar videojuegos" autocomplete="off" /></label>
+          <div class="filter-selects"><span class="filter-icon"><svg class="ic"><use href="#i-filtro" /></svg></span>
+            <label class="select-wrap"><span class="sr-only">Género</span>
+              <select name="genero" aria-label="Género"><option value="">Género</option><option>Acción</option><option>RPG</option><option>Aventura</option><option>Carreras</option><option>Deportes</option></select></label>
+            <label class="select-wrap"><span class="sr-only">Plataforma</span>
+              <select name="plataforma" aria-label="Plataforma"><option value="">Plataforma</option><option>PC</option><option>Windows / Mac</option></select></label>
+            <label class="select-wrap"><span class="sr-only">Estado</span>
+              <select name="estado" aria-label="Estado"><option value="">Estado</option><option>Instalado</option><option>No instalado</option><option>Jugando</option><option>Completado</option></select></label>
+            <label class="select-wrap"><span class="sr-only">Ordenar</span><select name="orden" aria-label="Ordenar"><option value="nombre">Ordenar: Nombre</option><option value="precio">Ordenar: Precio</option><option value="fecha">Ordenar: Fecha</option><option value="reciente">Última vez jugado</option></select></label>
+          </div>
+        </div>
+        <div class="library-grid"></div>
+        <div class="empty" hidden><span><svg class="ic"><use href="#i-buscar" /></svg></span>
+          <h2>No hay juegos para mostrar</h2>
+          <p>Cambia los filtros o compra un videojuego en la tienda para agregarlo a tu biblioteca.</p>
+        </div>
+      </section>
+    </main>
+    <div class="toast" role="status" hidden><span><svg class="ic"><use href="#i-confirmar" /></svg></span><b></b></div>
+    <dialog class="modal" id="ventana-eliminar" aria-labelledby="titulo-ventana-eliminar">
+      <form method="dialog" class="modal-body">
+        <button class="modal-close" aria-label="Cerrar"><svg class="ic"><use href="#i-cerrar" /></svg></button>
+        <div class="modal-icon modal-icon-peligro"><svg class="ic"><use href="#i-basura" /></svg></div>
+        <h2 id="titulo-ventana-eliminar">Eliminar videojuego</h2>
+        <p>¿Seguro que quieres eliminar <strong class="eliminar-nombre"></strong>? Se eliminará de <strong>todas las secciones de GameVault</strong> (Biblioteca, Tienda y Favoritos) y de forma permanente. Esta acción no se puede deshacer.</p>
+        <div class="modal-actions"><button class="btn btn-ghost" autofocus>Cancelar</button>
+          <button type="button" class="btn btn-danger" data-accion="confirmar-eliminar">Eliminar videojuego</button></div>
+      </form>
+    </dialog>
+  </div>
+  <script src="../js/gamevault.paquete.js"></script>
+</body>
+
+</html>

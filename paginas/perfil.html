@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameVault · Perfil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/estilos.css" />
+  <link rel="stylesheet" href="../css/componentes.css" />
+  <link rel="stylesheet" href="../css/adaptable.css" />
+</head>
+
+<body data-page="perfil">
+  <div class="app-shell">
+    <header class="desktop-nav">
+      <a class="logo" href="inicio.html"><span><svg class="ic"><use href="#i-biblioteca" /></svg></span>GameVault</a>
+      <nav aria-label="Principal">
+        <a href="inicio.html">Inicio</a>
+        <a href="tienda.html">Tienda</a>
+        <a href="biblioteca.html">Biblioteca</a>
+        <a href="favoritos.html">Favoritos</a>
+      </nav>
+      <a class="avatar is-current" href="perfil.html" aria-label="Perfil"><svg class="ic"><use href="#i-usuario" /></svg></a>
+    </header>
+    <nav class="mobile-nav" aria-label="Principal móvil">
+      <a href="inicio.html"><svg class="ic"><use href="#i-inicio" /></svg><span>Inicio</span></a>
+      <a href="tienda.html"><svg class="ic"><use href="#i-tienda" /></svg><span>Tienda</span></a>
+      <a href="biblioteca.html"><svg class="ic"><use href="#i-biblioteca" /></svg><span>Biblioteca</span></a>
+      <a href="favoritos.html"><svg class="ic"><use href="#i-corazon" /></svg><span>Favoritos</span></a>
+      <a href="perfil.html" class="is-current"><svg class="ic"><use href="#i-usuario" /></svg><span>Perfil</span></a>
+    </nav>
+    <noscript><p style="padding:24px">GameVault necesita JavaScript para funcionar.</p></noscript>
+
+    <main>
+      <section class="page" id="perfil">
+        <div class="profile-hero">
+          <div class="profile-avatar"><svg class="ic"><use href="#i-usuario" /></svg></div>
+          <div><span class="eyebrow">MI CUENTA</span>
+            <h1>Mi perfil</h1>
+            <p>Resumen de tu actividad en GameVault.</p>
+          </div>
+        </div>
+        <div class="stats">
+          <article><strong id="estadistica-biblioteca">0</strong><span>Juegos en biblioteca</span></article>
+          <article><strong id="estadistica-favoritos">0</strong><span>Favoritos</span></article>
+          <article><strong id="estadistica-jugando">0</strong><span>Jugando</span></article>
+          <article><strong id="estadistica-completados">0</strong><span>Completados</span></article>
+        </div>
+      </section>
+    </main>
+    <div class="toast" role="status" hidden><span><svg class="ic"><use href="#i-confirmar" /></svg></span><b></b></div>
+  </div>
+  <script src="../js/gamevault.paquete.js"></script>
+</body>
+
+</html>
